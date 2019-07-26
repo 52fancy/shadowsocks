@@ -143,7 +143,6 @@ EOF
 install(){
 	# Install libsodium
     if [ ! -f /usr/local/lib/libsodium.a ]; then
-    		yum install -y unzip
 		unzip libsodium-master.zip
 		cd libsodium-master
         ./configure && make && make install
