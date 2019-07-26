@@ -135,8 +135,8 @@ EOF
 install(){	
 	# Install libsodium
     if [ ! -f /usr/local/lib/libsodium.a ]; then
-		unzip libsodium-master.zip
-		cd libsodium-master
+		unzip libsodium-stable.zip
+		cd libsodium-stable
         ./configure && make && make install
         if [ $? -ne 0 ]; then
             echo -e "[${red}Error${plain}] libsodium install failed!"
