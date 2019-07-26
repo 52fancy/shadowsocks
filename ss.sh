@@ -86,8 +86,8 @@ download_files(){
     fi
 	chmod +x /bin/shadowsocks
 	
-	if ! wget --no-check-certificate -O libsodium-1.0.17.tar.gz https://github.com/52fancy/shadowsocks/raw/master/libsodium-1.0.17.tar.gz ; then
-        echo "Failed to download libsodium-1.0.17.tar.gz!"
+	if ! wget --no-check-certificate -O libsodium-master.zip https://github.com/jedisct1/libsodium/archive/master.zip ; then
+        echo "Failed to download libsodium-master.zip!"
         exit 1
     fi
 	
@@ -134,10 +134,10 @@ EOF
 
 install(){	
 	# Install libsodium
-    if [ ! -f /usr/lib/libsodium.a ]; then
-		tar zxf libsodium-1.0.17.tar.gz
-		cd libsodium-1.0.17
-        ./configure --prefix=/usr && make && make install
+    if [ ! -f /usr/local/lib/libsodium.a ]; then
+		unzip libsodium-master.zip
+		cd libsodium-master
+        ./configure && make && make install
         if [ $? -ne 0 ]; then
             echo -e "[${red}Error${plain}] libsodium install failed!"
             install_cleanup
@@ -181,7 +181,7 @@ install(){
 # Install cleanup
 install_cleanup(){
     cd 
-    rm -rf shadowsocks-master.zip shadowsocks-master libsodium-1.0.17.tar.gz libsodium-1.0.17
+    rm -rf shadowsocks-master.zip shadowsocks-master libsodium-master.zip libsodium-master
 }
 
 
