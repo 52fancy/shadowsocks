@@ -86,8 +86,8 @@ download_files(){
     fi
 	chmod +x /bin/shadowsocks
 	
-	if ! wget --no-check-certificate -O libsodium-master.zip https://github.com/jedisct1/libsodium/archive/master.zip ; then
-        echo "Failed to download libsodium-master.zip!"
+	if ! wget --no-check-certificate -O libsodium-stable.zip https://github.com/jedisct1/libsodium/archive/stable.zip ; then
+        echo "Failed to download libsodium-stable.zip!"
         exit 1
     fi
 	
@@ -181,7 +181,7 @@ install(){
 # Install cleanup
 install_cleanup(){
     cd 
-    rm -rf shadowsocks-master.zip shadowsocks-master libsodium-master.zip libsodium-master
+    rm -rf shadowsocks-master.zip shadowsocks-master libsodium-stable.zip libsodium-stable
 }
 
 
